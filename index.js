@@ -42,6 +42,9 @@ exports.start = function (options) {
         '-b', '16',                             // precision (bits)
         '-t', audioType,  // audio type
         '-'
+         // end on silence
+        'silence', '1', '0.1', options.thresholdStart || options.threshold + '%',
+        '1', options.silence, options.thresholdEnd || options.threshold + '%'
       ]
       break
     case 'rec':
@@ -57,7 +60,7 @@ exports.start = function (options) {
         '-b', '16',               // precision (bits)
         '-t', audioType,              // audio type
         '-',                      // pipe
-            // end on silence
+        // end on silence
         'silence', '1', '0.1', options.thresholdStart || options.threshold + '%',
         '1', options.silence, options.thresholdEnd || options.threshold + '%'
       ]
